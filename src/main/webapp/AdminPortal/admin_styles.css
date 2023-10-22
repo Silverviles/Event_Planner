@@ -1,0 +1,98 @@
+
+@import url("https://fonts.googleapis.com/css?family=Mada:400,500,600");
+
+@import url("bootstrap/css/bootstrap.min.css");
+
+body {
+    font-family: "Mada", sans-serif;
+    font-size: 14px;
+    color: #686c71;
+    font-weight: 400;
+    background: #eff3f6;
+    position: relative;
+}
+
+
+.card {
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px #e2e5e8;
+    border: none;
+    margin-bottom: 30px;
+    transition: all 0.5s ease-in-out;
+}
+
+.bg-c-blue {
+    background: linear-gradient(45deg, #3949AB, #2962FF) !important;
+}
+
+.text-c-blue {
+    color: #3949AB;
+}
+
+.b-c-blue {
+    border: 1px solid #3949AB;
+}
+
+.bg-c-red {
+    background: linear-gradient(45deg, #e52d27, #b31217) !important;
+}
+
+.text-c-red {
+    color: #e52d27;
+}
+
+.b-c-red {
+    border: 1px solid #e52d27;
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg, #2ca961, #2ed88a) !important;
+}
+
+.text-c-green {
+    color: #2ca961;
+}
+
+.b-c-green {
+    border: 1px solid #2ca961;
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg, #F57C00, #FFB64D) !important;
+}
+
+.text-c-yellow {
+    color: #F57C00;
+}
+
+.b-c-yellow {
+    border: 1px solid #F57C00;
+}
+
+.pcoded-content {
+    position: relative;
+    display: block;
+    padding: 25px;
+}
+
+
+@media only screen and (max-width: 991px) {
+    .pcoded-content {
+        padding: 30px 15px;
+    }
+}
+
+.prod-p-card i {
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 11px 0;
+    font-size: 18px;
+}
+
+table{
+	margin: 20px;
+	width: 95%;
+}
