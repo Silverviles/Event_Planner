@@ -185,6 +185,7 @@ public class UserDB {
     }
 
     public static void updateUser(int userId, String userType) {
+    	System.out.println("Inside update: " + userId + " " + userType);
         Connection connection = null;
         try {
             connection = getConnection();

@@ -178,23 +178,6 @@
 										</div>
 									</div>
 								</div>
-								<!-- sessions-section end -->
-								<div class="col-md-6 col-xl-4">
-									<div class="card user-card">
-										<div class="card-header">
-											<h5>Profile</h5>
-										</div>
-										<div class="card-body  text-center">
-											<div class="usre-image">
-												<i class="fas fa-solid fa-user f-18"></i>
-											</div>
-											<h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
-											<p>Active | Male | Born 23.05.1992</p>
-										</div>
-									</div>
-								</div>
-							</div>
-
 							<!-- [ Main Content ] end -->
 						</div>
 					</div>

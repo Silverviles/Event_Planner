@@ -17,15 +17,18 @@ public class ModifyUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        int userId = Integer.parseInt(request.getParameter("userid"));
 
         if ("delete".equals(action)) {
             // Handle user deletion
-            int userId = Integer.parseInt(request.getParameter("userid"));
+            System.out.println(userId);
             UserDB.deleteUser(userId);
         } else if ("update".equals(action)) {
             // Handle user update
-            int userId = Integer.parseInt(request.getParameter("userid"));
+            
             String userType = request.getParameter("newType");
+            System.out.println(request.getParameter("newType"));
+            System.out.println(userId);
             UserDB.updateUser(userId, userType);
         }
 
