@@ -41,13 +41,13 @@
 							<div class="row">
 
 								<!-- User Details Summary -->
-								<div class="col-xl-3 col-md-6" onclick="showDetails(users_details)">
+								<div class="col-xl-3 col-md-6">
 									<div class="card prod-p-card bg-c-red">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Total Users</h6>
-													<h3 class="m-b-0 text-white">User Count</h3>
+													<h3 class="m-b-0 text-white">User Count: ${user_count}</h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-solid fa-users text-c-red f-18"></i>
@@ -62,7 +62,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Customers</h6>
-													<h3 class="m-b-0 text-white">Customer Count</h3>
+													<h3 class="m-b-0 text-white">Customer Count: ${customer_count}</h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-solid fa-user f-18"></i>
@@ -77,7 +77,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Service Providers</h6>
-													<h3 class="m-b-0 text-white">Service Provider Count</h3>
+													<h3 class="m-b-0 text-white">Service Provider Count: ${service_provider_count}</h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-dollar-sign text-c-green f-18"></i>
@@ -92,7 +92,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Event Organizers</h6>
-													<h3 class="m-b-0 text-white">Event Organizer Count</h3>
+													<h3 class="m-b-0 text-white">Event Organizer Count: ${event_organizer_count}</h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-solid fa-user-tie text-c-yellow f-18"></i>
@@ -128,27 +128,45 @@
 														        </thead>
 														        <tbody>
 														            <c:forEach items="${users}" var="user">
-														                <tr>
-														                    <td>${user.userid}</td>
-														                    <td>${user.username}</td>
-														                    <td>${user.password}</td>
-														                    <td>${user.email}</td>
-														                    <td>${user.mobile_no}</td>
-														                    <td>
-														                        <select name="userType_${user.userid}" id="userType_${user.userid}">
-														                            <option value="Event Organizer" ${user.event_organizer ? 'selected' : ''}>Event Organizer</option>
-														                            <option value="Service Provider" ${user.service_provider ? 'selected' : ''}>Service Provider</option>
-														                            <option value="Customer" ${!user.event_organizer && !user.service_provider ? 'selected' : ''}>Customer</option>
-														                        </select>
-														                    </td>
-														                    <td>
-														                        <button type="button" onclick="submitAction(${user.userid})">Delete</button>
-														                    </td>
-														                    <td>
-														                        <button type="button" onclick="submitUpdate(${user.userid})">Update</button>
-														                    </td>
-														                </tr>
-														            </c:forEach>
+																	    <tr>
+																	        <td>${user.userid}</td>
+																	        <td>${user.username}</td>
+																	        <td>${user.password}</td>
+																	        <td>${user.email}</td>
+																	        <td>${user.mobile_no}</td>
+																	        
+																	        <td>
+																	            <c:choose>
+																	                <c:when test="${user.admin}">
+																	                    <!-- Display admin text and disable buttons for admins -->
+																	                    <td>Admin</td>
+																	                    <td>
+																	                        <button type="button" disabled>Delete</button>
+																	                    </td>
+																	                    <td>
+																	                        <button type="button" disabled>Update</button>
+																	                    </td>
+																	                </c:when>
+																	                <c:otherwise>
+																	                    <!-- Display "Delete" and "Update" buttons for non-admin users -->
+																	                    <td>
+																				            <select name="userType_${user.userid}" id="userType_${user.userid}">
+																				                <option value="Event Organizer" ${user.event_organizer ? 'selected' : ''}>Event Organizer</option>
+																				                <option value="Service Provider" ${user.service_provider ? 'selected' : ''}>Service Provider</option>
+																				                <option value="Customer" ${!user.event_organizer && !user.service_provider ? 'selected' : ''}>Customer</option>
+																				            </select>
+																				        </td>
+																	                    <td>
+																	                        <button type="button" onclick="submitAction(${user.userid})">Delete</button>
+																	                    </td>
+																	                    <td>
+																	                        <button type="button" onclick="submitUpdate(${user.userid})">Update</button>
+																	                    </td>
+																	                </c:otherwise>
+																	            </c:choose>
+																	        </td>
+																	    </tr>
+																	</c:forEach>
 														        </tbody>
 														    </table>
 														    <input type="hidden" id="action" name="action" value="">
@@ -168,7 +186,7 @@
 										</div>
 										<div class="card-body  text-center">
 											<div class="usre-image">
-												<img src="../assets/images/widget/img-round1.jpg" class="img-radius wid-100 m-auto" alt="User-Profile-Image">
+												<i class="fas fa-solid fa-user f-18"></i>
 											</div>
 											<h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
 											<p>Active | Male | Born 23.05.1992</p>
@@ -183,6 +201,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- [ Main Content ] end -->
 

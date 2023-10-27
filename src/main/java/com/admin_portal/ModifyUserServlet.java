@@ -14,7 +14,7 @@ public class ModifyUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action"); // Add an 'action' parameter to identify the action
+        String action = request.getParameter("action");
         
         if ("delete".equals(action)) {
             // Handle user deletion

@@ -214,6 +214,37 @@ public class UserDB {
             closeConnection(connection);
         }
     }
+    
+    public static int getCustomerCount() {
+        Connection connection = null;
+        int customers = 0;
+        
+        try {
+            connection = getConnection();
+            String query = "SELECT COUNT(userid) FROM users WHERE admin = 0 AND event_organizer = 0 AND service_provider = 0";
+            Statement stmt = connection.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+            
+            // Check if the query returned any results
+            if (result.next()) {
+                customers = result.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the database connection in a finally block to ensure it's always closed
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        return customers;
+    }
+
 
     private static void closeConnection(Connection connection) {
         if (connection != null) {
