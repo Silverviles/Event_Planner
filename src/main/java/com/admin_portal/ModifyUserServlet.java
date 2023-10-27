@@ -1,12 +1,14 @@
 package com.admin_portal;
 
 import java.io.IOException;
-import database.UserDB;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import database.UserDB;
 
 @WebServlet("/ModifyUserServlet")
 public class ModifyUserServlet extends HttpServlet {
@@ -15,7 +17,7 @@ public class ModifyUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        
+
         if ("delete".equals(action)) {
             // Handle user deletion
             int userId = Integer.parseInt(request.getParameter("userid"));

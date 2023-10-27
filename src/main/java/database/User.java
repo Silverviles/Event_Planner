@@ -22,6 +22,21 @@ public class User {
 		this.event_organizer = event_organizer;
 		this.service_provider = service_provider;
 	}
+	
+	public User(String username, String password, String email, String mobile_no, boolean admin,
+			boolean event_organizer, boolean service_provider) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.mobile_no = mobile_no;
+		this.admin = admin;
+		this.event_organizer = event_organizer;
+		this.service_provider = service_provider;
+	}
+
+
+
 	public int getUserid() {
 		return userid;
 	}

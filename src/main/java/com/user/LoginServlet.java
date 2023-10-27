@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("userid", u.getUserid());
                 session.setAttribute("username", u.getUsername());
                 session.setAttribute("password", u.getPassword());
-                
+
                 if(u.isAdmin()) {
                 	session.setAttribute("type", "admin");
                 }
@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
                 else {
                 	session.setAttribute("type", "customer");
                 }
-                
+
                 RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
                 dis.forward(request, response);
             } else if (userDetails != null && userDetails.containsKey(0)) {

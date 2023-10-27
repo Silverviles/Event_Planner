@@ -168,7 +168,7 @@ public class UserDB {
 
         return users;
     }
-    
+
     public static void deleteUser(int userId) {
         Connection connection = null;
         try {
@@ -188,19 +188,25 @@ public class UserDB {
         Connection connection = null;
         try {
             connection = getConnection();
-            
+
             int eventOrganizerValue = 0;
             int adminValue = 0;
             int serviceProviderValue = 0;
-            
+
             if ("Event Organizer".equals(userType)) {
                 eventOrganizerValue = 1;
             } else if ("Service Provider".equals(userType)) {
                 serviceProviderValue = 1;
+            } else if ("Customer".equals(userType)) {
+            	eventOrganizerValue = 0;
+            	adminValue = 0;
+            	serviceProviderValue = 0;
             } else {
-                // If userType is something else, you can handle it here (e.g., setting defaults).
+            	eventOrganizerValue = 0;
+            	adminValue = 0;
+            	serviceProviderValue = 0;
             }
-            
+
             String updateQuery = "UPDATE users SET event_organizer = ?, admin = ?, service_provider = ? WHERE userid = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
             preparedStatement.setInt(1, eventOrganizerValue);
@@ -214,17 +220,17 @@ public class UserDB {
             closeConnection(connection);
         }
     }
-    
+
     public static int getCustomerCount() {
         Connection connection = null;
         int customers = 0;
-        
+
         try {
             connection = getConnection();
             String query = "SELECT COUNT(userid) FROM users WHERE admin = 0 AND event_organizer = 0 AND service_provider = 0";
             Statement stmt = connection.createStatement();
             ResultSet result = stmt.executeQuery(query);
-            
+
             // Check if the query returned any results
             if (result.next()) {
                 customers = result.getInt(1);
@@ -241,7 +247,7 @@ public class UserDB {
                 }
             }
         }
-        
+
         return customers;
     }
 

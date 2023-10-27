@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import database.User;
 import database.UserDB;
@@ -21,17 +20,7 @@ public class AdminServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		HttpSession session;
-		if(request.getSession() == null) {
-			RequestDispatcher dis = request.getRequestDispatcher("user.jsp");
-			dis.forward(request, response);
-		}
-		else if(request.getSession() != null) {
-			session = request.getSession();
-			
-		}
-		*/
+
 		List<User> users = new ArrayList<>();
 		List<User> admins = new ArrayList<>();
 		List<User> service_providers = new ArrayList<>();
